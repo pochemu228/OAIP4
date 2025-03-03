@@ -1,27 +1,23 @@
+def horse2(position):
+    moves = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (-1, 2), (1, -2), (-1, -2)]
+
+    x = ord(position[0]) - ord("a")
+    y = int(position[1]) - 1
+
+    total_moves = []
+
+    for move in moves:
+        new_x = x + move[0]
+        new_y = y + move[1]
+
+        if 0 <= new_x < 8 and 0 <= new_y < 8:
+            new_position = chr(new_x + ord("a")) + str(new_y + 1)
+            total_moves.append(new_position)
+
+    return total_moves
+
 def main():
-    def horse2(place):
-        letters = 'abcdefgh'
-        numeral = '12345678'
+    print(horse2("a3"))
 
-        col = place[0]
-        row = int(place[1])
-
-        result = []
-
-        for i in range(-2, 3):
-            for j in range(-2, 3):
-                if abs(i * j) == 2:
-                    new_col = letters.find(col) + i
-                    new_row = row + j
-
-                    if 0 <= new_col < len(letters) and 1 <= new_row <= len(numeral):
-                        result.append(letters[new_col] + str(new_row))
-
-        return result
-
-    place = input("Введите положение коня (например, f2): ")
-    possible_moves = horse2(place)
-    print(f'Ходы коня из места {place}: {possible_moves}')
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
